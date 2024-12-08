@@ -1,0 +1,79 @@
+﻿@page "/dogprofiles/delete"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>DogProfile</h2>
+    <hr />
+    @if (dogprofile is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@dogprofile.Name</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Breed</dt>
+            <dd class="col-sm-10">@dogprofile.Breed</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Age</dt>
+            <dd class="col-sm-10">@dogprofile.Age</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Size</dt>
+            <dd class="col-sm-10">@dogprofile.Size</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Location</dt>
+            <dd class="col-sm-10">@dogprofile.Location</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@dogprofile.Description</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">ImageUrl</dt>
+            <dd class="col-sm-10">@dogprofile.ImageUrl</dd>
+        </dl>
+        <EditForm method="post" Model="dogprofile" OnValidSubmit="DeleteDogProfile" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(dogprofile is null)">Delete</button> |
+            <a href="/dogprofiles">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private DogProfile? dogprofile;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        dogprofile = await context.DogProfile.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (dogprofile is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteDogProfile()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.DogProfile.Remove(dogprofile!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/dogprofiles");
+    }
+}

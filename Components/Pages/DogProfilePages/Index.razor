@@ -1,0 +1,42 @@
+﻿@page "/dog"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using FinalProject.Models
+@using FinalProject.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="dogprofiles/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.DogProfile">
+    <PropertyColumn Property="dogprofile => dogprofile.Name" />
+    <PropertyColumn Property="dogprofile => dogprofile.Breed" />
+    <PropertyColumn Property="dogprofile => dogprofile.Age" />
+    <PropertyColumn Property="dogprofile => dogprofile.Size" />
+    <PropertyColumn Property="dogprofile => dogprofile.Location" />
+    <PropertyColumn Property="dogprofile => dogprofile.Description" />
+    <PropertyColumn Property="dogprofile => dogprofile.ImageUrl" />
+
+    <TemplateColumn Context="dogprofile">
+        <a href="@($"dogprofiles/edit?id={dogprofile.Id}")">Edit</a> |
+        <a href="@($"dogprofiles/details?id={dogprofile.Id}")">Details</a> |
+        <a href="@($"dogprofiles/delete?id={dogprofile.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private FinalProjectContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

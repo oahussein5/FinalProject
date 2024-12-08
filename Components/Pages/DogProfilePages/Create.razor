@@ -1,0 +1,74 @@
+﻿@page "/dogprofiles/create"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>DogProfile</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="DogProfile" OnValidSubmit="AddDogProfile" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label> 
+                <InputText id="name" @bind-Value="DogProfile.Name" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Name" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="breed" class="form-label">Breed:</label> 
+                <InputText id="breed" @bind-Value="DogProfile.Breed" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Breed" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label> 
+                <InputNumber id="age" @bind-Value="DogProfile.Age" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Age" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="size" class="form-label">Size:</label> 
+                <InputText id="size" @bind-Value="DogProfile.Size" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Size" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label> 
+                <InputText id="location" @bind-Value="DogProfile.Location" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Location" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label> 
+                <InputText id="description" @bind-Value="DogProfile.Description" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.Description" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="imageurl" class="form-label">ImageUrl:</label> 
+                <InputText id="imageurl" @bind-Value="DogProfile.ImageUrl" class="form-control" /> 
+                <ValidationMessage For="() => DogProfile.ImageUrl" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/dogprofiles">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private DogProfile DogProfile { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddDogProfile()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.DogProfile.Add(DogProfile);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/dogprofiles");
+    }
+}

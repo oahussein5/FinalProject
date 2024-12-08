@@ -1,0 +1,54 @@
+﻿@page "/applications/create"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Application</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Application" OnValidSubmit="AddApplication" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="userid" class="form-label">UserId:</label> 
+                <InputText id="userid" @bind-Value="Application.UserId" class="form-control" /> 
+                <ValidationMessage For="() => Application.UserId" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="isapproved" class="form-label">IsApproved:</label> 
+                <InputCheckbox id="isapproved" @bind-Value="Application.IsApproved" class="form-check-input" /> 
+                <ValidationMessage For="() => Application.IsApproved" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="applicationfee" class="form-label">ApplicationFee:</label> 
+                <InputNumber id="applicationfee" @bind-Value="Application.ApplicationFee" class="form-control" /> 
+                <ValidationMessage For="() => Application.ApplicationFee" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/applications">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Application Application { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddApplication()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Application.Add(Application);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/applications");
+    }
+}
