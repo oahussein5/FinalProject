@@ -1,0 +1,43 @@
+﻿@page "/aboutus"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using FinalProject.Models
+@using FinalProject.Data
+
+<!-- Link to Google Fonts for a different font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Welcome Header Section -->
+<div class="welcome-container text-center mt-5">
+    <h1 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Welcome to Doggy Domain</h1>
+    <p style="font-family: 'Roboto', sans-serif; font-size: 1.1rem; color: #555;">Where your new best friend is waiting for you!</p>
+    <a href="/signup" class="btn btn-primary mt-3" style="font-family: 'Roboto', sans-serif;">Adopt a Dog</a>
+</div>
+
+<!-- Navbar Section -->
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Doggy Domain</a>
+    </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="container mt-4">
+    <div class="card" style="font-family: 'Roboto', sans-serif;">
+        <div class="card-body">
+            <h3>About Doggy Domain</h3>
+            <p>At <strong>Doggy Domain</strong>, our mission began in 2024 in Fargo, ND, driven by one passion: to connect every dog with a family who will love and care for them. We’re not just about adoption—we're here to make every step of your journey as a dog owner seamless, joyful, and unforgettable.</p>
+
+            <p>Our team believes in the power of building lasting bonds between dogs and their owners, providing a space where both can thrive. We carefully vet each of our lovable pups to make sure they're the right fit for your lifestyle, and our adoption process ensures that you and your new best friend will have the best start together.</p>
+
+            <p>Our core values are rooted in empathy, compassion, and service to both our furry friends and their new families. Whether you're looking for a loyal companion, need guidance on training, or are seeking the perfect pet supplies, Doggy Domain is your go-to place. We’re here to support you in every step of your pet journey, because we believe that every dog deserves a happy home.</p>
+
+            <p class="mt-3">Ready to find your new best friend? Browse through our adoption listings, and let the adventure begin!</p>
+            <a href="/signup" class="btn btn-primary">Start Adoption Process</a>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

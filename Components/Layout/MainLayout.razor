@@ -7,8 +7,40 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            <a href="aboutus" target="_blank" class="about-us-link">About Us</a>
         </div>
+
+        <style>
+            .top-row {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .about-us-link {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 700;
+                font-size: 1rem; /* Smaller size */
+                text-transform: uppercase;
+                color: #ffffff;
+                background-color: #333; /* Blue color */
+                padding: 8px 20px; /* Smaller padding */
+                border-radius: 20px; /* Slightly smaller rounded corners */
+                text-decoration: none;
+                display: inline-block;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+                .about-us-link:hover {
+                    background-color: #0056b3; /* Darker blue on hover */
+                    transform: scale(1.05);
+                }
+
+                .about-us-link:focus {
+                    outline: none;
+                    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+                }
+        </style>
+
 
         <article class="content px-4">
             @Body

@@ -46,6 +46,7 @@
     padding-left: 8px; /* Slight padding to the left for balance */
 }
 
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .nav-link {

@@ -3,30 +3,104 @@
         <a class="navbar-brand" href="">Doggy Domain</a>
     </div>
 </div>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Make the background dark with a gradient */
+        .navbar-dark {
+            background: linear-gradient(135deg, #4b6cb7, #182848); /* Gradient from purple to dark blue */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
 
+        /* Customize the navbar brand */
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 150;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+            .navbar-brand:hover {
+                transform: scale(1.1);
+                color: #f7a600; 
+            }
+
+        .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Optionally, add some padding to the navbar */
+        .top-row {
+            padding: 15px 50px; /* Add padding for a sleeker look */
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #f7a600; 
+            text-decoration: underline;
+        }
+    </style>
+    <br />
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="nav-text">Home</span>
-            </NavLink>
+        <div class="nav-item px-4">
+            <a href="" target="_blank" class="about-us-link">Home</a>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="signup">
-                <span class="nav-text">User Profile</span>
-            </NavLink>
+
+        <br />
+
+        <div class="nav-item px-4">
+            <a href="signup" target="_blank" class="about-us-link">User Profile</a>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="dog">
-                <span class="nav-text">Dog Profile</span>
-            </NavLink>
+
+        <br />
+
+        <div class="nav-item px-4">
+            <a href="dog" target="_blank" class="about-us-link">Dog Profile</a>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="policy">
-                <span class="nav-text">Policy</span>
-            </NavLink>
+
+        <br />
+
+        <div class="nav-item px-4">
+            <a href="policy" target="_blank" class="about-us-link">Policy</a>
         </div>
+
+        <style>
+            .top-row {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .about-us-link {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 700;
+                font-size: 1rem; /* Smaller size */
+                text-transform: uppercase;
+                color: #ffffff;
+                background-color: #333; /* Blue color */
+                padding: 8px 20px; /* Smaller padding */
+                border-radius: 20px; /* Slightly smaller rounded corners */
+                text-decoration: none;
+                display: inline-block;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+                .about-us-link:hover {
+                    background-color: #0056b3; /* Darker blue on hover */
+                    transform: scale(1.05);
+                }
+
+                .about-us-link:focus {
+                    outline: none;
+                    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+                }
+        </style>
     </nav>
 </div>
 
