@@ -1,0 +1,53 @@
+﻿@* @page "/" *@
+
+@* <PageTitle>Home</PageTitle> *@
+
+@* <h1>Doggy Domain</h1> *@
+
+@* TAKE THIS TIME TO LOOK AROUND! *@
+
+@page "/"
+@using FinalProject.Models
+@* @model FinalProject.Pages.SignUpModel *@
+
+<PageTitle>Sign Up</PageTitle>
+
+<h1>Sign Up for Doggy Domain</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="UserName">Username</label>
+        <input type="text" class="form-control" id="UserName" name="UserName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
+    </div>
+
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
+@* @if (Model.SignUpSuccess) *@
+@* { *@
+@*     <div class="alert alert-success mt-3"> *@
+@*         <strong>Success!</strong> You have signed up successfully. *@
+@*     </div> *@
+@* } *@
+
+@* @if (Model.ErrorMessage != null) *@
+@* { *@
+@*     <div class="alert alert-danger mt-3"> *@
+@*         <strong>Error!</strong> @Model.ErrorMessage *@
+@*     </div> *@
+@* } *@
