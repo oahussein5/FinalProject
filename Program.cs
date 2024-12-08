@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FinalProject.Data;
+using System.Configuration;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContextFactory<FinalProjectContext>(options =>
@@ -25,6 +28,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
     app.UseMigrationsEndPoint();
 }
+
 
 app.UseHttpsRedirection();
 

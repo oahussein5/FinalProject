@@ -17,5 +17,6 @@ namespace FinalProject.Data
         public DbSet<FinalProject.Models.Application> Application { get; set; } = default!;
         public DbSet<FinalProject.Models.DogProfile> DogProfile { get; set; } = default!;
         public DbSet<FinalProject.Models.User> User { get; set; } = default!;
+
     }
 }
