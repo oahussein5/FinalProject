@@ -1,0 +1,65 @@
+﻿@page "/user"
+@using FinalProject.Models
+@inject NavigationManager Navigation
+
+<PageTitle>User Profile</PageTitle>
+
+<h1>User Profile</h1>
+
+@if (user != null)
+{
+    <div class="card shadow-lg rounded-3 mb-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>@user.FirstName @user.LastName's Profile</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <h5 class="text-muted">Username:</h5>
+                    <p class="lead">@user.UserName</p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <h5 class="text-muted">Email:</h5>
+                    <p class="lead">@user.Email</p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <h5 class="text-muted">First Name:</h5>
+                    <p class="lead">@user.FirstName</p>
+                </div>
+                <div class="col-12 col-md-6 mb-3">
+                    <h5 class="text-muted">Last Name:</h5>
+                    <p class="lead">@user.LastName</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-outline-primary btn-lg" @onclick="EditProfile">
+                    <i class="bi bi-pencil-square me-2"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="alert alert-warning">
+        <strong>Warning!</strong> User information is missing.
+    </div>
+}
+
+@code {
+    private User user = new User
+        {
+            UserName = "john_doe",       // Example data
+            Email = "john.doe@example.com",
+            FirstName = "John",
+            LastName = "Doe"
+        };
+
+    private void EditProfile()
+    {
+        // Redirect to the edit page
+        Navigation.NavigateTo("/user/edit");
+    }
+}
