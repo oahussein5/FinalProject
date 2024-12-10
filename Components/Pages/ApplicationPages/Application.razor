@@ -1,0 +1,48 @@
+﻿@page "/application"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@using FinalProject.Data
+@inject NavigationManager NavigationManager
+
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Doggy Domain</a>
+    </div>
+</div>
+
+<br />
+<br />
+
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<h1 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Application Form</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="UserName" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="UserName" name="UserName" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email Address:</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="FirstName" class="form-label">First Name:</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="LastName" class="form-label">Last Name:</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" required />
+    </div>
+</form>
+
+<form action="/submit" method="POST">
+    <!-- Your form fields go here -->
+    <button type="submit" class="btn btn-primary" onclick="window.location.href=''; return false;">Submit</button>
+</form>
+
+
