@@ -19,7 +19,7 @@
 
 <!-- Application Form -->
 <div class="container mt-4">
-    <form @onsubmit="HandleSubmit">
+    <form >
         <!-- Full Name -->
         <div class="mb-3">
             <label for="fullName" class="form-label">Full Name:</label>
@@ -85,25 +85,16 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="text-center mt-3">
-            <button type="submit" class="btn btn-primary">Submit Application</button>
-        </div>
+        <form action="/submit" method="POST">
+            <!-- Your form fields go here -->
+            <button type="submit" class="btn btn-primary" onclick="window.location.href='/success'; return false;">Submit Application</button>
+        </form>
     </form>
 </div>
 
 @code {
     private ApplicationModel application = new ApplicationModel();
 
-    private void HandleSubmit()
-    {
-        // Log application to console or save to database if needed
-        Console.WriteLine($"Application Submitted for: {application.FullName}");
-        Console.WriteLine($"Email: {application.Email}, Phone: {application.PhoneNumber}");
-        Console.WriteLine($"Dog to Adopt: {application.DogToAdopt}");
-
-        // Redirect to success page
-        NavigationManager.NavigateTo("/success");
-    }
 
     private class ApplicationModel
     {
