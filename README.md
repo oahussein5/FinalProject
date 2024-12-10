@@ -60,3 +60,12 @@ for ex)
 
 the href goes to the url its appointed to, at the end where it says user profile it will change the name of the text,
 inside user profile ryan with the index i change the link to user so it would do that, but im sure it will prob be changed i was just testing it.
+
+Renamed .razor files for clarity
+DogProfilePages is a folder for all of the pages that have to do with listings
+
+Defaults Seem to be the pages on the left (navbar pages)
+
+Application Pages are for applications
+
+User Pages have to do with creating an account
