@@ -1,0 +1,120 @@
+﻿@page "/application-page"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@using FinalProject.Data
+@inject NavigationManager NavigationManager
+
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Doggy Domain</a>
+    </div>
+</div>
+
+<br />
+<br />
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<h1 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Create Your Adoption Application</h1>
+
+<!-- Application Form -->
+<div class="container mt-4">
+    <form @onsubmit="HandleSubmit">
+        <!-- Full Name -->
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" @bind="application.FullName" required />
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="date" class="form-control" id="dob" @bind="application.DateOfBirth" required />
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" class="form-control" id="address" @bind="application.Address" required />
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address:</label>
+            <input type="email" class="form-control" id="email" @bind="application.Email" required />
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" @bind="application.PhoneNumber" required />
+        </div>
+
+        <!-- Yearly Income -->
+        <div class="mb-3">
+            <label for="income" class="form-label">Yearly Income:</label>
+            <input type="number" class="form-control" id="income" @bind="application.YearlyIncome" min="0" required />
+        </div>
+
+        <!-- Adopted in the last 12 months -->
+        <div class="mb-3">
+            <label class="form-label">Have you adopted a pet within the last 12 months?</label><br />
+            <select class="form-control" @bind="application.AdoptedLast12Months">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Criminal Record -->
+        <div class="mb-3">
+            <label class="form-label">Do you have a criminal record?</label><br />
+            <select class="form-control" @bind="application.CriminalRecord">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Dog to Adopt (Dropdown) -->
+        <div class="mb-3">
+            <label for="dogSelection" class="form-label">Which dog would you like to adopt?</label><br />
+            <select class="form-control" id="dogSelection" @bind="application.DogToAdopt">
+                <option value="Confuscious">Confuscious</option>
+                <option value="Chiquito">Chiquito</option>
+                <option value="Pubert">Pubert</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Submit Application</button>
+        </div>
+    </form>
+</div>
+
+@code {
+    private ApplicationModel application = new ApplicationModel();
+
+    private void HandleSubmit()
+    {
+        // Log application to console or save to database if needed
+        Console.WriteLine($"Application Submitted for: {application.FullName}");
+        Console.WriteLine($"Email: {application.Email}, Phone: {application.PhoneNumber}");
+        Console.WriteLine($"Dog to Adopt: {application.DogToAdopt}");
+
+        // Redirect to success page
+        NavigationManager.NavigateTo("/success");
+    }
+
+    private class ApplicationModel
+    {
+        public string FullName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public decimal YearlyIncome { get; set; }
+        public string AdoptedLast12Months { get; set; } = "No";
+        public string CriminalRecord { get; set; } = "No";
+        public string DogToAdopt { get; set; } = "Confuscious";
+    }
+}

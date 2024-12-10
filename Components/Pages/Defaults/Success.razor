@@ -1,0 +1,14 @@
+﻿@page "/success"
+@using Microsoft.EntityFrameworkCore
+@using FinalProject.Models
+@using FinalProject.Data
+@inject NavigationManager NavigationManager
+
+<div class="container mt-5 text-center">
+    <h2 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Application Submitted Successfully!</h2>
+    <p>
+        Thank you for applying to adopt a dog from Doggy Domain. We will review your application and get back to you soon.
+    </p>
+    <br />
+    <a class="btn btn-success" href="/application-page">Submit Another Application</a>
+</div>
