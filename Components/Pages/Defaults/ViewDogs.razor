@@ -9,10 +9,27 @@
 
 <!-- Welcome Header Section -->
 <div class="welcome-container text-center mt-5">
-    <h1 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Welcome to Doggy Domain</h1>
-    <p style="font-family: 'Roboto', sans-serif; font-size: 1.1rem; color: #555;">Where your new best friend is waiting for you!</p>
-    <a href="/signup" class="btn btn-primary mt-3" style="font-family: 'Roboto', sans-serif;">Create an Account</a>
+    <h1 style="font-family: 'Roboto', sans-serif; font-weight: 700;">Adoptable Dogs</h1>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <img src="@dog.ImageUrl" class="card-img-top" alt="@dog.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@dog.Name</h5>
+                    <a href="@dog.ProfileUrl" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @code {
-
+    private DogProfile dog = new DogProfile
+        {
+            Name = "Buddy",
+            ImageUrl = "dog1.jpg", // Replace with a real image URL
+            ProfileUrl = "/profile/buddy"
+        };
 }
