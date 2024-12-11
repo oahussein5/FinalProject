@@ -6,28 +6,29 @@
 
 <PageTitle>Chat</PageTitle>
 
-<div class="form-group">
-    <label>
-        User:
-        <input @bind="userInput" />
-    </label>
-</div>
-<div class="form-group">
-    <label>
-        Message:
-        <input @bind="messageInput" size="50" />
-    </label>
-</div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
+<div class="chat-container">
+    <h2 class="chat-title">Real-Time Chat</h2>
 
-<hr>
+    User: John Doe
 
-<ul id="messagesList">
-    @foreach (var message in messages)
-    {
-        <li>@message</li>
-    }
-</ul>
+    <div class="form-group">
+        <label for="messageInput">
+            Message:
+        </label>
+        <input id="messageInput" @bind="messageInput" class="form-control" placeholder="Enter your message" size="50" />
+    </div>
+
+    <button @onclick="Send" class="btn btn-primary" disabled="@(!IsConnected)">Send</button>
+
+    <hr />
+
+    <ul id="messagesList" class="messages-list">
+        @foreach (var message in messages)
+        {
+            <li class="message-item">@message</li>
+        }
+    </ul>
+</div>
 
 @code {
     private HubConnection? hubConnection;
@@ -55,7 +56,7 @@
     {
         if (hubConnection is not null)
         {
-            await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+            await hubConnection.SendAsync("SendMessage", "John Doe", messageInput);
         }
     }
 
