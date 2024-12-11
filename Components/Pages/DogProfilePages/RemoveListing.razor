@@ -1,7 +1,7 @@
 ﻿@page "/dog/listing"
 @using Microsoft.EntityFrameworkCore
 @using FinalProject.Models
-@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject IDbContextFactory<FinalProject.Data.DogDataContext> DbFactory
 @inject NavigationManager NavigationManager
 
 <PageTitle>Delete</PageTitle>
@@ -61,7 +61,7 @@
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        dogprofile = await context.DogProfile.FirstOrDefaultAsync(m => m.Id == Id);
+        dogprofile = await context.DogProfiles.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (dogprofile is null)
         {
@@ -72,7 +72,7 @@
     private async Task DeleteDogProfile()
     {
         using var context = DbFactory.CreateDbContext();
-        context.DogProfile.Remove(dogprofile!);
+        context.DogProfiles.Remove(dogprofile!);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/dogprofiles");
     }

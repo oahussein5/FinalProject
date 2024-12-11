@@ -1,7 +1,7 @@
 ﻿@page "/dog/edit"
 @using Microsoft.EntityFrameworkCore
 @using FinalProject.Models
-@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject IDbContextFactory<FinalProject.Data.DogDataContext> DbFactory
 @inject NavigationManager NavigationManager
 
 <PageTitle>Edit</PageTitle>
@@ -77,7 +77,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        DogProfile ??= await context.DogProfile.FirstOrDefaultAsync(m => m.Id == Id);
+        DogProfile ??= await context.DogProfiles.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (DogProfile is null)
         {
@@ -114,6 +114,6 @@ else
     private bool DogProfileExists(int id)
     {
         using var context = DbFactory.CreateDbContext();
-        return context.DogProfile.Any(e => e.Id == id);
+        return context.DogProfiles.Any(e => e.Id == id);
     }
 }

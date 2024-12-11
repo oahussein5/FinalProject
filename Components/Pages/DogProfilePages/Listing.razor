@@ -1,7 +1,7 @@
 ﻿@page "/dog/details"
 @using Microsoft.EntityFrameworkCore
 @using FinalProject.Models
-@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
+@inject IDbContextFactory<FinalProject.Data.DogDataContext> DbFactory
 @inject NavigationManager NavigationManager
 
 <PageTitle>Details</PageTitle>
@@ -48,7 +48,7 @@
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        dogprofile = await context.DogProfile.FirstOrDefaultAsync(m => m.Id == Id);
+        dogprofile = await context.DogProfiles.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (dogprofile is null)
         {

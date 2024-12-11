@@ -5,8 +5,7 @@ using FinalProject.Data;
 using System.Configuration;
 using FinalProject.Hubs;
 using Microsoft.AspNetCore.ResponseCompression;
-
-
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +17,9 @@ builder.Services.AddResponseCompression(opts =>
         ["application/octet-stream"]);
 });
 
-builder.Services.AddDbContextFactory<FinalProjectContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("FinalProjectContext") ?? throw new InvalidOperationException("Connection string 'FinalProjectContext' not found.")));
+// Add DbContext Factory
+builder.Services.AddDbContextFactory<DogDataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DogDataConnection")));
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
