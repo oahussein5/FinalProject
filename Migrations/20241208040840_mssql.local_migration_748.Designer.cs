@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Migrations
 {
-    [DbContext(typeof(DogDataContext))]
+    [DbContext(typeof(FinalProjectContext))]
     [Migration("20241208040840_mssql.local_migration_748")]
     partial class mssqllocal_migration_748
     {

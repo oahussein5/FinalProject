@@ -4,8 +4,7 @@
 @using FinalProject.Models
 @using FinalProject.Data
 @implements IAsyncDisposable
-@inject IDbContextFactory<FinalProject.Data.DogDataContext> DbFactory
-
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
 
 <PageTitle>Listings</PageTitle>
 
@@ -15,7 +14,7 @@
     <a href="dogprofiles/create">Create New</a>
 </p>
 
-<QuickGrid Class="table" Items="context.DogProfiles">
+<QuickGrid Class="table" Items="context.DogProfile">
     <PropertyColumn Property="dogprofile => dogprofile.Name" />
     <PropertyColumn Property="dogprofile => dogprofile.Breed" />
     <PropertyColumn Property="dogprofile => dogprofile.Age" />
@@ -32,7 +31,7 @@
 </QuickGrid>
 
 @code {
-    private DogDataContext context = default!;
+    private FinalProjectContext context = default!;
 
     protected override void OnInitialized()
     {

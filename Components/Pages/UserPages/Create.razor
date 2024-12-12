@@ -1,7 +1,7 @@
 ﻿@page "/users/create"
 @using Microsoft.EntityFrameworkCore
 @using FinalProject.Models
-@inject IDbContextFactory<FinalProject.Data.DogDataContext> DbFactory
+@inject IDbContextFactory<FinalProject.Data.FinalProjectContext> DbFactory
 @inject NavigationManager NavigationManager
 
 <PageTitle>Create</PageTitle>
@@ -52,7 +52,7 @@
     private async Task AddUser()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Users.Add(User);
+        context.User.Add(User);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/users");
     }

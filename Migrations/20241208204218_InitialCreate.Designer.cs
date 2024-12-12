@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Migrations
 {
-    [DbContext(typeof(DogDataContext))]
+    [DbContext(typeof(FinalProjectContext))]
     [Migration("20241208204218_InitialCreate")]
     partial class InitialCreate
     {

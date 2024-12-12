@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Migrations
 {
-    [DbContext(typeof(DogDataContext))]
+    [DbContext(typeof(FinalProjectContext))]
     partial class FinalProjectContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
